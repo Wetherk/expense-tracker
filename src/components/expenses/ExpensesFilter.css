@@ -1,0 +1,39 @@
+.expenses-filter {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 20px;
+    width: 300px;
+    margin: 20px auto;
+    background-color: #f5f5f5;
+}
+
+.filter-label {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.filter-select {
+    font-size: 1rem;
+    padding: 0 1rem;
+    border: 1px solid #e91e63;
+    border-radius: 4px;
+    color: #e91e63;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    outline: none;
+}
+
+.filter-select:hover {
+    background-color: #e91e63;
+    color: #fff;
+}
+
+.filter-select option {
+    background-color: #fff;
+    color: #e91e63;
+}

@@ -1,7 +1,11 @@
+import { useState } from "react";
+
 import ExpensesList from "./components/expenses/ExpensesList";
+import NexExpense from "./components/newExpense/NewExpense";
+import ExpensesFilter from "./components/expenses/ExpensesFilter";
 
 function App() {
-    const expenses = [
+    const [expenses, setExpenses] = useState([
         {
             id: "e1",
             title: "Toilet Paper",
@@ -32,11 +36,25 @@ function App() {
             amount: 650,
             date: new Date(2023, 5, 12),
         },
-    ];
+    ]);
+    const [filteredExpenses, setFilteredExpenses] = useState(expenses);
+
+    const handleAddExpense = (expense) => {
+        setExpenses((oldExpenses) => [expense, ...oldExpenses]);
+    };
+
+    const handleFilterChange = (filteredExpenses) => {
+        setFilteredExpenses(filteredExpenses);
+    };
 
     return (
         <div>
-            <ExpensesList expenses={expenses} />
+            <NexExpense onAddExpense={handleAddExpense} />
+            <ExpensesFilter
+                expenses={expenses}
+                onFilterChange={handleFilterChange}
+            />
+            <ExpensesList expenses={filteredExpenses} />
         </div>
     );
 }

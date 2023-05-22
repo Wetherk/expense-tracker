@@ -1,26 +1,17 @@
 import "./ExpensesFilter.css";
 import Card from "../UI/Card";
 
-function ExpensesFilter({ expenses, onFilterChange }) {
+function ExpensesFilter({ value, years, onFilterChange }) {
     const handleExpenseFilterChange = (event) => {
-        const filterValue = event.target.value;
-        if (filterValue === "All") {
-            onFilterChange(expenses);
-            return;
-        }
-
-        const filteredExpenses = [...expenses].filter(
-            (expense) => expense.date.getFullYear().toString() === filterValue
-        );
-
-        onFilterChange(filteredExpenses);
+        // if (filterValue === "All") {
+        //     onFilterChange(expenses);
+        //     return;
+        // }
+        // const filteredExpenses = [...expenses].filter(
+        //     (expense) => expense.date.getFullYear().toString() === filterValue
+        // );
+        onFilterChange(event.target.value);
     };
-
-    const years = [
-        ...new Set(
-            expenses.map((expense) => expense.date.getFullYear().toString())
-        ),
-    ];
 
     return (
         <Card className="expenses-filter">
@@ -29,6 +20,7 @@ function ExpensesFilter({ expenses, onFilterChange }) {
                 className="filter-select"
                 name="filterByYear"
                 id="filterByYear"
+                value={value}
                 onChange={handleExpenseFilterChange}
             >
                 <option value="All">All</option>
